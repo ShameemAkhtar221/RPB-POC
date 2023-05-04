@@ -23,6 +23,7 @@ public class CVPreviewPage {
         return driver.findElement(profileName);
     }
 
+    //comment
     public void deleteProfile(){
         List<WebElement> list =  driver.findElements(profileDeleteIcon);
         for (int i = 0; i < list.size(); i++){
