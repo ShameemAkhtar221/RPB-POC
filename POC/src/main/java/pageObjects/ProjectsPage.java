@@ -2,6 +2,9 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import resources.CommonMethods;
 
 public class ProjectsPage {
@@ -10,7 +13,12 @@ public class ProjectsPage {
 
     public ProjectsPage(WebDriver driver){
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
+
+
+    @FindBy(xpath = "//h5[contains(text(),'add Projects?')]/following-sibling::button")
+    WebElement projectSection;
 
     By projectName = By.xpath("//input[@name='projectName']");
     By projectType = By.xpath("//input[@name='projectType']");
@@ -19,6 +27,10 @@ public class ProjectsPage {
     By image = By.xpath("//input[@type='file']");
     By finish = By.xpath("//button[@type='button']/span[contains(text(), 'Finish')]");
 
+
+    public void setProjectSection(){
+        projectSection.click();
+    }
 
     public void setProjectName(){
         driver.findElement(projectName).sendKeys("Project Name");

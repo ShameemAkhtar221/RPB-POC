@@ -16,7 +16,7 @@ public class CVPreviewPage {
     }
 
     By profileName = By.xpath("//div[@class='nam-title']/div[2]");
-    By profileDeleteIcon = By.xpath("//button[@type='button']/img");
+    By profileDeleteIcon = By.xpath("//button[@type='button']/span/img");
     By profileDeleteConfirmation = By.xpath("//button[@type='button']/span[contains(text(), 'Yes')]");
 
     public WebElement profileName(){
@@ -28,7 +28,7 @@ public class CVPreviewPage {
         List<WebElement> list =  driver.findElements(profileDeleteIcon);
         for (int i = 0; i < list.size(); i++){
             String atr = list.get(i).getAttribute("src");
-            if(atr.equalsIgnoreCase("https://dev.poc.synavos.com/icons/delete-white.svg")){
+            if(atr.equalsIgnoreCase("https://qa.poc.synavos.com/icons/delete-white.svg")){
                 list.get(i).click();
             }
         }

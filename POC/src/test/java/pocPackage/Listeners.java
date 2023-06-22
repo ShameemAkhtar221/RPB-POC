@@ -44,6 +44,15 @@ public class Listeners extends base implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         extentTestThreadLocal.get().fail(result.getThrowable());
+
+        String[] groups = result.getMethod().getGroups();
+        for(String group : groups){
+            if(group.equals("restAssuredTests")){
+                System.out.println("test fail");
+                return;
+            }
+        }
+
         WebDriver driver = null;
         String testMethodName = result.getMethod().getMethodName();
         try {

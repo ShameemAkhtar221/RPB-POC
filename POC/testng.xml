@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+<suite name="RPB Automation Suit">
     <listeners>
         <listener class-name="pocPackage.Listeners"/>
     </listeners>
@@ -12,6 +12,32 @@
     <test name="Add Employee">
         <classes>
             <class name="pocPackage.AddEmployeeTest"/>
+        </classes>
+    </test>
+    <test name="Login API">
+        <classes>
+            <class name="pocPackage.LoginApiTest"/>
+        </classes>
+    </test>
+    <test name="Designation Test">
+        <classes>
+            <class name="pocPackage.DesignationApiTest"/>
+        </classes>
+    </test>
+    <test name="Department Test">
+        <classes>
+            <class name="pocPackage.DepartmentsApiTest"/>
+        </classes>
+    </test>
+    <test name="Employee and Profile creation E2E flow">
+        <groups>
+            <dependencies>
+                <group name="employeeDeletion" depends-on="employeeCreation profileCreation"/>
+            </dependencies>
+        </groups>
+        <classes>
+            <class name="pocPackage.EmployeeApiTest"/>
+            <class name="pocPackage.ProfileApiTest"/>
         </classes>
     </test>
 </suite> <!-- Suite -->

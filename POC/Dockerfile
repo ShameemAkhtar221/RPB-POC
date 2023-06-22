@@ -1,5 +1,5 @@
 #Step 0: Choose base
-FROM openjdk:8
+FROM openjdk:11
 #Step 1 : Install the pre-requisite
 RUN apt-get update
 RUN apt-get install -y curl
@@ -12,62 +12,83 @@ RUN apt-get install -y p7zip \
 
 
 #Version numbers
-ARG FIREFOX_VERSION=78.0.2
-ARG CHROME_VERSION=100.0.4896.75
-ARG CHROMDRIVER_VERSION=100.0.4896.60
-ARG FIREFOXDRIVER_VERSION=0.26.0
+# ARG FIREFOX_VERSION=78.0.2
+ARG CHROME_VERSION=111.0.5563.64
+ARG CHROMDRIVER_VERSION=111.0.5563.64
+# ARG FIREFOXDRIVER_VERSION=0.26.0
+
+ENV CHROMEDRIVER_PATH /usr/local/bin/chromedriver
+ENV FIREFOX_DRIVER_PATH /usr/local/bin/chromedriver
+COPY src/main/java/resources/data.properties /usr/src/app/data.properties
+
+# Killing running chrome process
+RUN pkill -f chromedriver
+RUN pkill -f chrome
 
 
 #Step 2: Install Chrome
 RUN curl http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_$CHROME_VERSION-1_amd64.deb -o /chrome.deb
 RUN apt-get update && apt-get install -y \
-   fonts-liberation \
-   libasound2 \
-   libatk-bridge2.0-0 \
-   libatk1.0-0 \
-   libatspi2.0-0 \
-   libcairo2 \
-   libcups2 \
-   libdbus-1-3 \
-   libdrm2 \
-   libgbm1 \
-   libglib2.0-0 \
-   libgtk-3-0 \
-   libnspr4 \
-   libnss3 \
-   libpango-1.0-0 \
-   libx11-6 \
-   libxcb1 \
-   libxcomposite1 \
-   libxdamage1 \
-   libxext6 \
-   libxfixes3 \
-   libxkbcommon0 \
-   libxrandr2 \
-   xdg-utils \
-   --no-install-recommends \
-   && rm -rf /var/lib/apt/lists/*
-
+     fonts-liberation \
+        libasound2 \
+        libatk-bridge2.0-0 \
+        libatk1.0-0 \
+        libatspi2.0-0 \
+        libcairo2 \
+        libcups2 \
+        libdbus-1-3 \
+        libdrm2 \
+        libgbm1 \
+        libglib2.0-0 \
+        libgtk-3-0 \
+        libnspr4 \
+        libnss3 \
+        libpango-1.0-0 \
+        libu2f-udev \
+        libvulkan1 \
+        libx11-6 \
+        libxcb1 \
+        libxcomposite1 \
+        libxdamage1 \
+        libxext6 \
+        libxfixes3 \
+        libxkbcommon0 \
+        libxrandr2 \
+        xdg-utils \
+        --no-install-recommends \
+        && rm -rf /var/lib/apt/lists/*
 
 RUN dpkg -i /chrome.deb
 RUN rm /chrome.deb
+
+# RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+#     && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
+#     && apt-get update \
+#     && apt-get install ca-certificates \
+#     && apt-get install -y google-chrome-stable=${CHROME_VERSION}-1 \
+#     && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+
 #Step 3: Install chromedriver for Selenium
-RUN mkdir -p /app/bin
-RUN curl https://chromedriver.storage.googleapis.com/$CHROMDRIVER_VERSION/chromedriver_linux64.zip -o /tmp/chromedriver.zip \
-   && unzip /tmp/chromedriver.zip -d /app/bin/ \
-   && rm /tmp/chromedriver.zip
-RUN chmod +x /app/bin/chromedriver
-#Step 4 : Install firefox
-RUN wget --no-verbose -O /tmp/firefox.tar.bz2 https://download-installer.cdn.mozilla.net/pub/firefox/releases/$FIREFOX_VERSION/linux-x86_64/en-US/firefox-$FIREFOX_VERSION.tar.bz2 \
- && bunzip2 /tmp/firefox.tar.bz2 \
- && tar xvf /tmp/firefox.tar \
- && mv /firefox /opt/firefox-$FIREFOX_VERSION \
- && ln -s /opt/firefox-$FIREFOX_VERSION/firefox /usr/bin/firefox
-#Step 5: Install Geckodriver
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v$FIREFOXDRIVER_VERSION/geckodriver-v$FIREFOXDRIVER_VERSION-linux64.tar.gz \
-   && tar -xf geckodriver-v0.26.0-linux64.tar.gz \
-   && cp geckodriver /app/bin/geckodriver
-RUN chmod +x /app/bin/geckodriver
+RUN apt-get update && apt-get install -y curl unzip && \
+    curl -O https://chromedriver.storage.googleapis.com/${CHROMDRIVER_VERSION}/chromedriver_linux64.zip && \
+    unzip chromedriver_linux64.zip && \
+    mv chromedriver $CHROMEDRIVER_PATH && \
+    chmod +x $CHROMEDRIVER_PATH && \
+    rm chromedriver_linux64.zip
+
+RUN google-chrome --version
+
+# #Step 4 : Install firefox
+# RUN wget --no-verbose -O /tmp/firefox.tar.bz2 https://download-installer.cdn.mozilla.net/pub/firefox/releases/$FIREFOX_VERSION/linux-x86_64/en-US/firefox-$FIREFOX_VERSION.tar.bz2 \
+#  && bunzip2 /tmp/firefox.tar.bz2 \
+#  && tar xvf /tmp/firefox.tar \
+#  && mv /firefox /opt/firefox-$FIREFOX_VERSION \
+#  && ln -s /opt/firefox-$FIREFOX_VERSION/firefox /usr/bin/firefox
+# #Step 5: Install Geckodriver
+# RUN wget https://github.com/mozilla/geckodriver/releases/download/v$FIREFOXDRIVER_VERSION/geckodriver-v$FIREFOXDRIVER_VERSION-linux64.tar.gz \
+#    && tar -xf geckodriver-v0.26.0-linux64.tar.gz \
+#    && cp geckodriver /app/bin/geckodriver
+# RUN chmod +x /app/bin/geckodriver
 #Step 6: Install Maven
 # 1- Define Maven version
 ARG MAVEN_VERSION=3.6.3
@@ -106,3 +127,8 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 COPY . /app
 #Making our working directory as /app
 WORKDIR /app
+
+RUN mvn package
+#  -DskipTests
+
+ENTRYPOINT ["mvn", "test"]

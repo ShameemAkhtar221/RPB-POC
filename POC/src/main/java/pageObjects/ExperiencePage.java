@@ -3,6 +3,8 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import resources.CommonMethods;
 import resources.TestData;
 
@@ -23,9 +25,19 @@ public class ExperiencePage {
 
     By saveAndContinue = By.xpath("//button[@type='button']/span[contains(text(), 'Save & Continue')]");
 
+    By designation = By.cssSelector("input[name='designation']");
+
     public void addStartDate(){
         driver.findElement(startDate).click();
         driver.findElement(chooseMonth).click();
+    }
+
+    public WebElement setDesignation(){
+        return driver.findElement(designation);
+    }
+
+    public WebElement setPreviousCompanyDesignation(){
+        return driver.findElements(designation).get(1);
     }
 
     public void addJobDescription() throws InterruptedException {
@@ -55,10 +67,10 @@ public class ExperiencePage {
         WebElement el = driver.findElements(jobDescription).get(1);
         el.sendKeys(TestData.jobDescription);
     }
-    public SkillsPage setSaveAndContinue(){
-        SkillsPage skillsPage = new SkillsPage(driver);
+    public AcademicsPage setSaveAndContinue(){
+        AcademicsPage academicsPage = new AcademicsPage(driver);
         driver.findElement(saveAndContinue).click();
-        return skillsPage;
+        return academicsPage;
     }
 
 }

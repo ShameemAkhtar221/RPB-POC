@@ -3,17 +3,15 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import resources.CommonMethods;
 import resources.TestData;
 
-import java.time.Duration;
 import java.util.List;
 
 public class AddEmployeePage{
 
     public WebDriver driver;
+    public String userEmail;
 
     public AddEmployeePage(WebDriver driver){
         this.driver = driver;
@@ -60,9 +58,15 @@ public class AddEmployeePage{
         driver.findElement(dateOfBirthCalender).click();
         driver.findElement(dateOfBirth).click();
     }
-    public WebElement enterEmail(){
-        return driver.findElement(email);
+    public void setEmail(){
+        userEmail = CommonMethods.generateRandomEmail();
+        driver.findElement(email).sendKeys(userEmail);
     }
+
+    public String getUserEmail(){
+        return userEmail;
+    }
+
     public WebElement enterPhoneNumber(){
         return driver.findElement(phoneNumber);
     }
