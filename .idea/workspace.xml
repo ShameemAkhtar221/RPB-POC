@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="68bf3efe-e04c-40ba-8df5-a1f6f13a527b" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="edaeca79-6864-4afb-bd03-b404e2083dc8" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2P3CmUDhsAsWGwQRkmWGCY3tZa1" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/lubna/IdeaProjects/RPB-POC/POC",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  }
+}]]></component>
+  <component name="RunManager" selected="TestNG.StatsTest">
+    <configuration name="AddEmployeeTest (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="POC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pocPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pocPackage" />
+      <option name="MAIN_CLASS_NAME" value="pocPackage.AddEmployeeTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddEmployeeTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="POC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pocPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pocPackage" />
+      <option name="MAIN_CLASS_NAME" value="pocPackage.AddEmployeeTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddEmployeeTest.addEmployee" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="POC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pocPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pocPackage" />
+      <option name="MAIN_CLASS_NAME" value="pocPackage.AddEmployeeTest" />
+      <option name="METHOD_NAME" value="addEmployee" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StatsTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="POC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pocPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pocPackage" />
+      <option name="MAIN_CLASS_NAME" value="pocPackage.StatsTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="/home/lubna/IdeaProjects/RPB-POC/POC/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="POC" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/POC/testng.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.StatsTest" />
+        <item itemvalue="TestNG.AddEmployeeTest" />
+        <item itemvalue="TestNG./home/lubna/IdeaProjects/RPB-POC/POC/testng.xml" />
+        <item itemvalue="TestNG.AddEmployeeTest.addEmployee" />
+        <item itemvalue="TestNG.AddEmployeeTest (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="68bf3efe-e04c-40ba-8df5-a1f6f13a527b" name="Changes" comment="" />
+      <created>1682676536669</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682676536669</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/POC/src/test/java/pocPackage/AddEmployeeTest.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/RPB_POC$AddEmployeeTest.ic" NAME="AddEmployeeTest Coverage Results" MODIFIED="1683118794667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>pocPackage.*</FILTER>
+    </SUITE>
+  </component>
+</project>
