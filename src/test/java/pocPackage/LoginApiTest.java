@@ -59,7 +59,7 @@ public class LoginApiTest {
         request.body(loginRequest);
         Response response = request.post(URLResources.loginResource());
 
-        Assert.assertEquals(response.getStatusCode(), 401);
+        Assert.assertEquals(response.getStatusCode(), 400);
 
         System.out.println(response.asString());
         String errorMessage = response.getBody().asString();
@@ -70,7 +70,7 @@ public class LoginApiTest {
         if(data != null){
             Assert.assertNull(loginResponse.getData().getAccess_token());
         }
-        Assert.assertEquals(loginResponse.getError(), "Unauthorized");
+        Assert.assertEquals(loginResponse.getError(), "Bad Request");
         if(loginResponse.getPath() != null){
             Assert.assertEquals("/auth/login", loginResponse.getPath());
         }

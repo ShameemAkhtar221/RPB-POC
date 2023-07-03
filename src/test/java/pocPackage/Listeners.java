@@ -48,6 +48,7 @@ public class Listeners extends base implements ITestListener {
         String[] groups = result.getMethod().getGroups();
         for(String group : groups){
             if(group.equals("restAssuredTests")){
+
                 System.out.println("test fail");
                 return;
             }

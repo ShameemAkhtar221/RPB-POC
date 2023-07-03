@@ -1,0 +1,44 @@
+/* groovylint-disable LineLength */
+
+node {
+    app = null
+    stage('Checkout Repository') {
+        plan_name = (env.JOB_NAME.tokenize('/') as String[])[0]
+
+        checkout scm
+        sh 'git rev-parse --short HEAD > .git/commit-id'
+
+        env.COMMIT_ID = readFile('.git/commit-id').trim()
+        env.IMAGE_TAG = "synavoshub/${plan_name}:${commit_id}"
+        env.BUILD_TAG = "${plan_name}-${commit_id}"
+    }
+
+    sh 'printenv'
+
+    stage('Dockerizing') {
+        app = docker.build(env.IMAGE_TAG, '-f Dockerfile ./')
+    }
+
+    stage('Publish') {
+        docker.withRegistry('https://index.docker.io/v1/', 'synavoshub') {
+//             app.push()
+            if (env.BRANCH_NAME ==  'master') {
+                app.push('latest')
+            }
+        }
+    }
+
+    // stage('Pulling latest selenium image'){
+    //         docker.image('synavoshub/selenium_poc:latest').pull()
+    //     }
+
+    // stage('Running selenium Tests') {
+    //         sh 'sudo docker run -it --entrypoint  synavoshub/selenium_poc:latest'
+    //     }
+}
+
+
+String planName(String jobName) {
+    tokens = jobName.tokenize('/') as String[]
+    return tokens[0]
+}
